@@ -1,25 +1,34 @@
 import React from "react";
-
-
+import Welcome from "./partials/Welcome.jsx";
+import Snippet from "./partials/Snippet.jsx";
+import Message from "./partials/Message.jsx";
+import Footer from "./partials/Footer.jsx";
 
 function App(){
+
     return (
         <div>
-            <h1>Welcome to Codeblitz!</h1>
-            <p>Practice your typing skills like a true developer. Click **start** to begin!</p>
+            
+            <Welcome/>
 
             <br />
 
-            <p id="snippet"></p>
-            <p id="message"></p>
-            <p id="time"></p>
+            <Snippet />
+            <Message />
 
             <br />
 
             <div>
-                <input type="hidden" aria-label="current word" id="typed=value" />
-                <button type="button" id="start">Start</button>
+                <input 
+                id="typed-value"
+                type="hidden" 
+                aria-label="current word"/>
+                <button 
+                id="start"
+                type="button">Start</button>
             </div>
+
+            <Footer />
         </div>
     );
 }
