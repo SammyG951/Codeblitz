@@ -1,8 +1,9 @@
 import React from "react";
 
-function Snippet(){
+function Snippet(props){
+
     return (
-        <p>Snippet Place Holder</p>
+        <p>{props.text}</p>
     );
 }
 
