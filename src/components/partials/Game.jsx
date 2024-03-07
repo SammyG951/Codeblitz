@@ -38,21 +38,22 @@ function Game() {
         });
     }
 
-    function onInput(){
+    function handleInput(event){
         const currentWord = words[wordIndex];
-        console.log(words + " test");
+        const value = event.target.value;
+        setTypedValue(() => {return { value: value } });
 
-        if (typedValue.value === currentWord && wordIndex === words.length - 1){
+        if (value === currentWord && wordIndex === words.length - 1){
             setTypedValue(() => { return {type: "hidden"} })
 
             setMessage("Finished");
             setButtonTextDisplay(() => {
                 return {text: "Play Again?", display: ""};
             });
-        } else if (typedValue.value.endsWith(' ') && typedValue.value.trim() === currentWord) {
+        } else if (value.endsWith(' ') && value.trim() === currentWord) {
             setTypedValue(() => { return {value: ""} });
             setWordIndex(prevIndex => prevIndex + 1);
-        } else if (currentWord.startsWith(typedValue.value)){
+        } else if (currentWord.startsWith(value)){
             //typedValueElement.className = 'form-control'
         } else {
             //typedValueElement.className = 'form-control error'
@@ -82,7 +83,7 @@ function Game() {
                 value={typedValue.value}
                 aria-label="current word"
                 ref={inputRef}
-                onChange={onInput}
+                onChange={handleInput}
                 />
                 <button 
                 id="start"
