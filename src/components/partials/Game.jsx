@@ -6,8 +6,8 @@ function Game() {
     const inputRef = useRef(null);
 
     const phrase = "He shaved the peach to prove a point. Greetings from the real universe. Not all people who wander are lost.";
-    let words = [];
-    let wordIndex = 0;
+    const [words, setWords] = useState([]);
+    const [wordIndex, setWordIndex] = useState(0);
 
     const[codeSnippet, setCodeSnippet] = useState("");
     const[message, setMessage] = useState("");
@@ -23,7 +23,10 @@ function Game() {
     function startGame(){
         setMessage("");
         setCodeSnippet(phrase);
-        words = phrase.split(' ');
+        
+        const phraseWords = phrase.split(' ');
+        setWords(phraseWords);
+        setWordIndex(0);
 
         setTypedValue(() => {
             return {value: "", type: "text"}
@@ -48,7 +51,7 @@ function Game() {
             });
         } else if (typedValue.value.endsWith(' ') && typedValue.value.trim() === currentWord) {
             setTypedValue(() => { return {value: ""} });
-            wordIndex++;
+            setWordIndex(prevIndex => prevIndex + 1);
         } else if (currentWord.startsWith(typedValue.value)){
             //typedValueElement.className = 'form-control'
         } else {
