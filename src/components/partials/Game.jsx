@@ -52,7 +52,6 @@ function Game() {
 
         if (value === currentWord && wordIndex === words.length - 1){
             const elapsedTime = (new Date().getTime() - startTime) / 1000;
-            console.log(startTime);
             const wpm = (words.length / elapsedTime) * 60;
             setMessage(`CONGRATULATIONS! You finished in ${elapsedTime} seconds at ${wpm.toFixed(2)} words per minute.`)
 
