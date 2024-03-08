@@ -5,11 +5,12 @@ import Message from "../partials/Message.jsx";
 function Game() {
     const inputRef = useRef(null);
 
+
     useEffect(() => {
         inputRef.current.focus();
     })
 
-    const phrase = "He shaved the peach to prove a point. Greetings from the real universe. Not all people who wander are lost.";
+    const phrase = "He shaved the peach to prove a point.";
     const [words, setWords] = useState([]);
     const [wordIndex, setWordIndex] = useState(0);
 
@@ -23,6 +24,7 @@ function Game() {
         value: "",
         type: "hidden"
     })
+    const[startTime, setStartTime] = useState(0);
 
     function startGame(){
         setMessage("");
@@ -39,6 +41,8 @@ function Game() {
         setButtonTextDisplay(() => {
             return {display: "none"};
         });
+
+        setStartTime(Date.now());
     }
 
     function handleInput(event){
@@ -47,9 +51,13 @@ function Game() {
         setTypedValue(() => {return { value: value } });
 
         if (value === currentWord && wordIndex === words.length - 1){
+            const elapsedTime = (new Date().getTime() - startTime) / 1000;
+            console.log(startTime);
+            const wpm = (words.length / elapsedTime) * 60;
+            setMessage(`CONGRATULATIONS! You finished in ${elapsedTime} seconds at ${wpm.toFixed(2)} words per minute.`)
+
             setTypedValue(() => { return {type: "hidden"} })
 
-            setMessage("Finished");
             setButtonTextDisplay(() => {
                 return {text: "Play Again?", display: ""};
             });
