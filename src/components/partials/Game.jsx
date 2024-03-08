@@ -14,7 +14,6 @@ function Game() {
     const [words, setWords] = useState([]);
     const [wordIndex, setWordIndex] = useState(0);
 
-    const[codeSnippet, setCodeSnippet] = useState("");
     const[message, setMessage] = useState("");
     const[buttonTextDisplay, setButtonTextDisplay] = useState({
         text: "Start",
@@ -28,7 +27,6 @@ function Game() {
 
     function startGame(){
         setMessage("");
-        setCodeSnippet(phrase);
         
         const phraseWords = phrase.split(' ');
         setWords(phraseWords);
@@ -75,7 +73,8 @@ function Game() {
             <br />
 
             <Snippet 
-                text={codeSnippet}
+                text={words}
+                highlightIndex={wordIndex}
             />
             <Message
                 text={message}
