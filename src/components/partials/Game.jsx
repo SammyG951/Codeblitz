@@ -24,6 +24,7 @@ function Game() {
         type: "hidden"
     })
     const[startTime, setStartTime] = useState(0);
+    const[isError, setIsError] = useState(false);
 
     function startGame(){
         setMessage("");
@@ -62,9 +63,9 @@ function Game() {
             setTypedValue(() => { return {value: ""} });
             setWordIndex(prevIndex => prevIndex + 1);
         } else if (currentWord.startsWith(value)){
-            //typedValueElement.className = 'form-control'
+            setIsError(false);
         } else {
-            //typedValueElement.className = 'form-control error'
+            setIsError(true);
         }
     }
 
@@ -89,6 +90,10 @@ function Game() {
                 aria-label="current word"
                 ref={inputRef}
                 onChange={handleInput}
+                style={{
+                    backgroundColor: isError ? 'lightcoral' : '',
+                    border: isError ? 'red' : ''
+                }}
                 />
                 <button 
                 id="start"
