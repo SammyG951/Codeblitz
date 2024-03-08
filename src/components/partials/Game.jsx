@@ -1,9 +1,13 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import Snippet from "../partials/Snippet.jsx";
 import Message from "../partials/Message.jsx";
 
 function Game() {
     const inputRef = useRef(null);
+
+    useEffect(() => {
+        inputRef.current.focus();
+    })
 
     const phrase = "He shaved the peach to prove a point. Greetings from the real universe. Not all people who wander are lost.";
     const [words, setWords] = useState([]);
@@ -31,7 +35,6 @@ function Game() {
         setTypedValue(() => {
             return {value: "", type: "text"}
         })
-        focusInput();
 
         setButtonTextDisplay(() => {
             return {display: "none"};
@@ -58,10 +61,6 @@ function Game() {
         } else {
             //typedValueElement.className = 'form-control error'
         }
-    }
-
-    function focusInput() {
-        inputRef.current.focus();
     }
 
     return(
