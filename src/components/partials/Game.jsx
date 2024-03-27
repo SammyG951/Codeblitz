@@ -1,6 +1,7 @@
 import React, {useState, useRef, useEffect} from "react";
 import Snippet from "../partials/Snippet.jsx";
 import Message from "../partials/Message.jsx";
+import codeSnippets from "../../code_snippets.js";
 
 function Game() {
     const inputRef = useRef(null);
@@ -10,7 +11,8 @@ function Game() {
         inputRef.current.focus();
     })
 
-    const phrase = "He shaved the peach to prove a point.";
+    const phraseIndex = Math.floor(Math.random() * codeSnippets.length);
+    const phrase = codeSnippets[phraseIndex];
     const [words, setWords] = useState([]);
     const [wordIndex, setWordIndex] = useState(0);
 
