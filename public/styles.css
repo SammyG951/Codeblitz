@@ -1,0 +1,23 @@
+
+:root {
+    --bg_main: #262a31;
+    --text_light: #FFFBF5;
+}
+
+body {
+    background-color: var(--bg_main);
+    color: var(--text_light);
+}
+
+#welcome img {
+    display: block;
+    margin: 60px auto 50px auto;
+    width: 40%;
+}
+
+#welcome h3 {
+    text-align: center;
+    font-family: "Kanit", sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+}
