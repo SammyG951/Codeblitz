@@ -2,11 +2,20 @@
 :root {
     --bg_main: #262a31;
     --text_light: #FFFBF5;
+    --gradient_start: #ecb365;
+    --gradient_end: #ec730c;
+
+    --font_one: "Kanit", sans-serif
 }
 
 body {
     background-color: var(--bg_main);
     color: var(--text_light);
+}
+
+#welcome {
+    font-family: var(--font_one);
+    font-size: 30px;
 }
 
 #welcome img {
@@ -16,8 +25,16 @@ body {
 }
 
 #welcome h3 {
-    text-align: center;
-    font-family: "Kanit", sans-serif;
     font-weight: 300;
+    text-align: center;
+}
+
+#start {
+    font-family: var(--font_one);
+    background-image: linear-gradient(to bottom, var(--gradient_start), var(--gradient_end));
+    border-radius: 10px;
+    border: none;
+    color: var(--text_light);
     font-size: 30px;
+    padding: 10px 20px 10px 20px;
 }
